@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="entry in filteredHeroes">
+      <tr v-for="entry in filteredPlayers">
         <td v-for="key in columns">
           {{entry[key]}}
         </td>
@@ -27,7 +27,7 @@
 export default {
   name: 'PlayersListTable',
   props: {
-    heroes: Array,
+    players: Array,
     columns: Array,
     filterKey: String
   },
@@ -42,26 +42,49 @@ export default {
     }
   },
   computed: {
-    filteredHeroes: function () {
+//     filteredHeroes: function () {
+//       var sortKey = this.sortKey
+//       var filterKey = this.filterKey && this.filterKey.toLowerCase()
+//       var order = this.sortOrders[sortKey] || 1
+//       var heroes = this.heroes
+//       if (filterKey) {
+//         heroes = heroes.filter(function (row) {
+//           return Object.keys(row).some(function (key) {
+//             return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+//           })
+//         })
+//       }
+//       if (sortKey) {
+//         heroes = heroes.slice().sort(function (a, b) {
+//           a = a[sortKey]
+//           b = b[sortKey]
+//           return (a === b ? 0 : a > b ? 1 : -1) * order
+//         })
+//       }
+//       return heroes
+//     }
+//   },
+filteredPlayers: function () {
       var sortKey = this.sortKey
       var filterKey = this.filterKey && this.filterKey.toLowerCase()
       var order = this.sortOrders[sortKey] || 1
-      var heroes = this.heroes
+      var players = this.players.__ob__.value.Players
+      console.log(players.__ob__.value.Players)
       if (filterKey) {
-        heroes = heroes.filter(function (row) {
+        players = players.filter(function (row) {
           return Object.keys(row).some(function (key) {
             return String(row[key]).toLowerCase().indexOf(filterKey) > -1
           })
         })
       }
       if (sortKey) {
-        heroes = heroes.slice().sort(function (a, b) {
+        players = players.slice().sort(function (a, b) {
           a = a[sortKey]
           b = b[sortKey]
           return (a === b ? 0 : a > b ? 1 : -1) * order
         })
       }
-      return heroes
+      return players
     }
   },
   filters: {
