@@ -3,7 +3,9 @@
    <table>
     <thead>
       <tr>
-        <th v-for="key in columns"
+        <th 
+        v-bind:key="key"
+        v-for="key in columns"
           @click="sortBy(key)"
           :class="{ active: sortKey == key }">
           {{ key | capitalize }}
@@ -13,8 +15,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="entry in filteredPlayers">
-        <td v-for="key in columns">
+      <tr v-bind:key="entry" v-for="entry in filteredPlayers">
+        <td v-bind:key="key" v-for="key in columns">
           {{entry[key]}}
         </td>
       </tr>

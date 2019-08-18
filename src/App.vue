@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <NavBar />
+    <div class="nav">
+      <NavBar />
+    </div>
     <form id="search">
       Search
       <input name="query" v-model="searchQuery" />
@@ -17,7 +19,7 @@
 import NavBar from "./components/NavBar.vue";
 import PlayersListTable from "./components/PlayersListTable.vue";
 // import { fetch } from "whatwg-fetch";
-import players from './data/playerData.json'
+import players from "./data/playerData.json";
 
 export default {
   // el: '#demo',
@@ -84,9 +86,9 @@ export default {
       //   { name: "Jackie Chan", power: 7000 },
       //   { name: "Jet Li", power: 8000 }
       // ]
-    };
+    }
   }
-};
+}
 </script>
 
 <style>
@@ -97,5 +99,14 @@ export default {
   text-align: center;
   background-color: #2c3e50;
   height: fit-content;
+}
+#search {
+  margin-top: 8em;
+}
+.nav {
+  margin: 0;
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
 }
 </style>

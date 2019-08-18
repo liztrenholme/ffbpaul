@@ -28,7 +28,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .nav {
-    position: sticky;
+    position: fixed;
     width: 100%;
     background-color: #fff;
     padding-bottom: 1em;
