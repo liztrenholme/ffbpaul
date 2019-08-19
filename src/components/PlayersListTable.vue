@@ -1,109 +1,89 @@
 <template>
   <div :class="players-list">
-   <table>
-    <thead>
-      <tr>
-        <th 
-        v-bind:key="key"
-        v-for="key in columns"
-          @click="sortBy(key)"
-          :class="{ active: sortKey == key }">
-          {{ key | capitalize }}
-          <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
-          </span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-bind:key="entry" v-for="entry in filteredPlayers">
-        <td v-bind:key="key" v-for="key in columns">
-          {{entry[key]}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th
+            :key="key"
+            v-for="key in columns"
+            @click="sortBy(key)"
+            :class="{ active: sortKey == key }"
+          >
+            {{ key | capitalize }}
+            <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'"></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr :key="key" v-for="(entry, key) in filteredPlayers">
+          <td :key="key" v-for="key in columns">{{entry[key]}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'PlayersListTable',
+  name: "PlayersListTable",
   props: {
-    players: Array,
+    players: Object,
     columns: Array,
     filterKey: String
   },
-  data: function () {
-    var sortOrders = {}
-    this.columns.forEach(function (key) {
-      sortOrders[key] = 1
-    })
+  data: function() {
+    var sortOrders = {};
+    this.columns.forEach(function(key) {
+      sortOrders[key] = 1;
+    });
     return {
-      sortKey: '',
+      sortKey: "",
       sortOrders: sortOrders
-    }
+    };
   },
   computed: {
-//     filteredHeroes: function () {
-//       var sortKey = this.sortKey
-//       var filterKey = this.filterKey && this.filterKey.toLowerCase()
-//       var order = this.sortOrders[sortKey] || 1
-//       var heroes = this.heroes
-//       if (filterKey) {
-//         heroes = heroes.filter(function (row) {
-//           return Object.keys(row).some(function (key) {
-//             return String(row[key]).toLowerCase().indexOf(filterKey) > -1
-//           })
-//         })
-//       }
-//       if (sortKey) {
-//         heroes = heroes.slice().sort(function (a, b) {
-//           a = a[sortKey]
-//           b = b[sortKey]
-//           return (a === b ? 0 : a > b ? 1 : -1) * order
-//         })
-//       }
-//       return heroes
-//     }
-//   },
-filteredPlayers: function () {
-      var sortKey = this.sortKey
-      var filterKey = this.filterKey && this.filterKey.toLowerCase()
-      var order = this.sortOrders[sortKey] || 1
-      var players = this.players.__ob__.value.Players
-      console.log(players.__ob__.value.Players)
+    filteredPlayers: function() {
+      var sortKey = this.sortKey;
+      var filterKey = this.filterKey && this.filterKey.toLowerCase();
+      var order = this.sortOrders[sortKey] || 1;
+      var players = this.players.__ob__.value.Players;
+      console.log(this.players.__ob__.value.Players);
       if (filterKey) {
-        players = players.filter(function (row) {
-          return Object.keys(row).some(function (key) {
-            return String(row[key]).toLowerCase().indexOf(filterKey) > -1
-          })
-        })
+        players = players.filter(function(row) {
+          return Object.keys(row).some(function(key) {
+            return (
+              String(row[key])
+                .toLowerCase()
+                .indexOf(filterKey) > -1
+            );
+          });
+        });
       }
       if (sortKey) {
-        players = players.slice().sort(function (a, b) {
-          a = a[sortKey]
-          b = b[sortKey]
-          return (a === b ? 0 : a > b ? 1 : -1) * order
-        })
+        players = players.slice().sort(function(a, b) {
+          a = a[sortKey];
+          b = b[sortKey];
+          return (a === b ? 0 : a > b ? 1 : -1) * order;
+        });
       }
-      return players
+      return players;
     }
   },
   filters: {
-    capitalize: function (str) {
-      return str.charAt(0).toUpperCase() + str.slice(1)
+    capitalize: function(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
     }
   },
   methods: {
-    sortBy: function (key) {
-      this.sortKey = key
-      this.sortOrders[key] = this.sortOrders[key] * -1
+    sortBy: function(key) {
+      console.log(key, "hiiiiiii");
+      this.sortKey = key;
+      this.sortOrders[key] = this.sortOrders[key] * -1;
     }
   }
-}
+};
 
 // https://www.fantasyfootballnerd.com/service/players/json/test/QB/
-
 </script>
 
 
@@ -117,7 +97,7 @@ table {
 
 th {
   background-color: #42b983;
-  color: rgba(255,255,255,0.66);
+  color: rgba(255, 255, 255, 0.66);
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -129,7 +109,8 @@ td {
   background-color: #f9f9f9;
 }
 
-th, td {
+th,
+td {
   min-width: 120px;
   padding: 10px 20px;
 }
@@ -162,5 +143,4 @@ th.active .arrow {
   border-right: 4px solid transparent;
   border-top: 4px solid #fff;
 }
-
 </style>

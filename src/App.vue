@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <div class="nav">
+    <nav class="nav">
       <NavBar />
+    </nav>
+    <div class="mainContainer">
+      <form id="search">
+        Search
+        <input name="query" v-model="searchQuery" />
+      </form>
+      <PlayersListTable
+        v-bind:players="gridData"
+        v-bind:columns="gridColumns"
+        v-bind:filter-key="searchQuery"
+      />
     </div>
-    <form id="search">
-      Search
-      <input name="query" v-model="searchQuery" />
-    </form>
-    <PlayersListTable
-      v-bind:players="gridData"
-      v-bind:columns="gridColumns"
-      v-bind:filter-key="searchQuery"
-    />
   </div>
 </template>
 
@@ -86,13 +88,14 @@ export default {
       //   { name: "Jackie Chan", power: 7000 },
       //   { name: "Jet Li", power: 8000 }
       // ]
-    }
+    };
   }
-}
+};
 </script>
 
-<style>
+<style scoped>
 #app {
+  /* margin-top: -8em; */
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -100,13 +103,14 @@ export default {
   background-color: #2c3e50;
   height: fit-content;
 }
-#search {
-  margin-top: 8em;
+.mainContainer {
+  margin-top: 28em;
+  background-color: #2c3e50;
 }
 .nav {
-  margin: 0;
+  /* margin: -28;
   position: fixed;
   width: 100%;
-  background-color: #fff;
+  background-color: #fff; */
 }
 </style>
