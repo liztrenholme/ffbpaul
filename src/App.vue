@@ -6,7 +6,7 @@
     <div class="mainContainer">
       <form id="search">
         Search
-        <input name="query" v-model="searchQuery" />
+        <input name="query" v-model="searchQuery" placeholder="Begin typing..." />
       </form>
       <PlayersListTable
         v-bind:players="gridData"

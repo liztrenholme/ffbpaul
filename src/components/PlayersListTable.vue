@@ -17,6 +17,7 @@
       <tbody>
         <tr :key="key" v-for="(entry, key) in filteredPlayers">
           <td :key="key" v-for="key in columns">{{entry[key]}}</td>
+          <Button class="btn" text="Choose this Player" />
         </tr>
       </tbody>
     </table>
@@ -24,6 +25,8 @@
 </template>
 
 <script>
+import Button from '../components/Button.vue'
+
 export default {
   name: "PlayersListTable",
   props: {
@@ -92,7 +95,7 @@ table {
   border: 2px solid #42b983;
   border-radius: 3px;
   background-color: #fff;
-  width: fit-content;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -144,5 +147,8 @@ th.active .arrow {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #fff;
+}
+.btn {
+  width: fit-content;
 }
 </style>
