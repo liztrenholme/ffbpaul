@@ -24,7 +24,6 @@ import PlayersListTable from "./components/PlayersListTable.vue";
 import players from "./data/playerData.json";
 
 export default {
-  // el: '#demo',
   name: "app",
   components: {
     NavBar,
@@ -82,12 +81,6 @@ export default {
       searchQuery: "",
       gridColumns: ["displayName", "team", "position", "jersey"],
       gridData: players
-      // [
-      //   { name: "Chuck Norris", power: Infinity },
-      //   { name: "Bruce Lee", power: 9000 },
-      //   { name: "Jackie Chan", power: 7000 },
-      //   { name: "Jet Li", power: 8000 }
-      // ]
     };
   }
 };
@@ -101,16 +94,21 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #2c3e50;
-  height: fit-content;
+  /* height: fit-content; */
 }
 .mainContainer {
-  margin-top: 28em;
+  padding: 4em;
+  margin-top: 10em;
   background-color: #2c3e50;
 }
+form {
+  background-color: #5c89b6;
+  width: fit-content;
+  margin: 2em auto 1em auto;
+  padding: 1em;
+  border-radius: 5px;
+}
 .nav {
-  /* margin: -28;
-  position: fixed;
-  width: 100%;
-  background-color: #fff; */
+  margin-bottom: 1em;
 }
 </style>

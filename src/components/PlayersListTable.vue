@@ -76,7 +76,6 @@ export default {
   },
   methods: {
     sortBy: function(key) {
-      console.log(key, "hiiiiiii");
       this.sortKey = key;
       this.sortOrders[key] = this.sortOrders[key] * -1;
     }
@@ -93,6 +92,9 @@ table {
   border: 2px solid #42b983;
   border-radius: 3px;
   background-color: #fff;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 th {
