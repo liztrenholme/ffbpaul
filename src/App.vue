@@ -31,6 +31,9 @@ export default {
     NavBar,
     PlayersListTable
   },
+  // props: {
+  //   // playerslist: 
+  // }
   // mounted: function async() {
   //   let dataObj = {};
   //   const request = new Request(

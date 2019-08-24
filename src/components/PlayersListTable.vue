@@ -1,5 +1,5 @@
 <template>
-  <div :class="players-list">
+  <div>
     <table>
       <thead>
         <tr>
@@ -50,7 +50,6 @@ export default {
       var filterKey = this.filterKey && this.filterKey.toLowerCase()
       var order = this.sortOrders[sortKey] || 1
       var players = this.players.__ob__.value.Players
-      console.log(this.players.__ob__.value.Players)
       if (filterKey) {
         players = players.filter(function(row) {
           return Object.keys(row).some(function(key) {
