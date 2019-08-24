@@ -14,17 +14,17 @@
 </template>
 
 <script>
-import Button from "./Button.vue";
+import Button from './Button.vue'
 
 export default {
-  name: "NavBar",
+  name: 'NavBar',
   props: {
     // kittehs: String,
   },
   components: {
     Button
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

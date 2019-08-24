@@ -25,32 +25,32 @@
 </template>
 
 <script>
-import Button from '../components/Button.vue'
+// import Button from '../components/Button.vue'
 
 export default {
-  name: "PlayersListTable",
+  name: 'PlayersListTable',
   props: {
     players: Object,
     columns: Array,
     filterKey: String
   },
   data: function() {
-    var sortOrders = {};
+    var sortOrders = {}
     this.columns.forEach(function(key) {
-      sortOrders[key] = 1;
-    });
+      sortOrders[key] = 1
+    })
     return {
-      sortKey: "",
+      sortKey: '',
       sortOrders: sortOrders
-    };
+    }
   },
   computed: {
     filteredPlayers: function() {
-      var sortKey = this.sortKey;
-      var filterKey = this.filterKey && this.filterKey.toLowerCase();
-      var order = this.sortOrders[sortKey] || 1;
-      var players = this.players.__ob__.value.Players;
-      console.log(this.players.__ob__.value.Players);
+      var sortKey = this.sortKey
+      var filterKey = this.filterKey && this.filterKey.toLowerCase()
+      var order = this.sortOrders[sortKey] || 1
+      var players = this.players.__ob__.value.Players
+      console.log(this.players.__ob__.value.Players)
       if (filterKey) {
         players = players.filter(function(row) {
           return Object.keys(row).some(function(key) {
@@ -58,32 +58,32 @@ export default {
               String(row[key])
                 .toLowerCase()
                 .indexOf(filterKey) > -1
-            );
-          });
-        });
+            )
+          })
+        })
       }
       if (sortKey) {
         players = players.slice().sort(function(a, b) {
-          a = a[sortKey];
-          b = b[sortKey];
-          return (a === b ? 0 : a > b ? 1 : -1) * order;
-        });
+          a = a[sortKey]
+          b = b[sortKey]
+          return (a === b ? 0 : a > b ? 1 : -1) * order
+        })
       }
-      return players;
+      return players
     }
   },
   filters: {
     capitalize: function(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
+      return str.charAt(0).toUpperCase() + str.slice(1)
     }
   },
   methods: {
     sortBy: function(key) {
-      this.sortKey = key;
-      this.sortOrders[key] = this.sortOrders[key] * -1;
+      this.sortKey = key
+      this.sortOrders[key] = this.sortOrders[key] * -1
     }
   }
-};
+}
 
 // https://www.fantasyfootballnerd.com/service/players/json/test/QB/
 </script>
