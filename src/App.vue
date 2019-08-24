@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <nav class="nav">
+      <!-- funcs or bools to pass in to render specific playersListTable for each of 3 lists -->
       <NavBar />
     </nav>
     <div class="mainContainer">
@@ -8,6 +9,7 @@
         Search
         <input name="query" v-model="searchQuery" placeholder="Begin typing..." />
       </form>
+      <!-- will need this 3 times, one for each list, each rendered on if -->
       <PlayersListTable
         v-bind:players="gridData"
         v-bind:columns="gridColumns"
@@ -88,13 +90,11 @@ export default {
 
 <style scoped>
 #app {
-  /* margin-top: -8em; */
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #2c3e50;
-  /* height: fit-content; */
 }
 .mainContainer {
   padding: 4em;

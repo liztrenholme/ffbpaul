@@ -3,7 +3,9 @@
     <h1>Player Picker</h1>
     <h3>Kobayashi's Revenge</h3>
     <ul>
-      <li>View Draft List</li>
+      <li @click="showFullList">Full Draft List</li>
+      <li>Available Players</li>
+      <li>Players Already Picked</li>
       <li>Teams</li>
       <li>News</li>
       <li>
@@ -20,6 +22,7 @@ export default {
   name: 'NavBar',
   props: {
     // kittehs: String,
+    showFullList: Function
   },
   components: {
     Button
