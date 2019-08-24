@@ -18,13 +18,13 @@
 </template>
 
 <script>
-import NavBar from "./components/NavBar.vue";
-import PlayersListTable from "./components/PlayersListTable.vue";
+import NavBar from './components/NavBar.vue'
+import PlayersListTable from './components/PlayersListTable.vue'
 // import { fetch } from "whatwg-fetch";
-import players from "./data/playerData.json";
+import players from './data/playerData.json'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     NavBar,
     PlayersListTable
@@ -78,12 +78,12 @@ export default {
   // },
   data: function() {
     return {
-      searchQuery: "",
-      gridColumns: ["displayName", "team", "position", "jersey"],
+      searchQuery: '',
+      gridColumns: ['displayName', 'team', 'position', 'jersey'],
       gridData: players
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped>
